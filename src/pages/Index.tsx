@@ -3,21 +3,27 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { FileText, Plus, BarChart3, Users, Sparkles } from 'lucide-react';
+import { FileText, Plus, BarChart3, Users, Share2 } from 'lucide-react';
 import HeroSection from '@/components/HeroSection';
 import { InterviewForm } from '@/components/InterviewForm';
 import { Dashboard } from '@/components/Dashboard';
+import { ClientView } from '@/components/ClientView';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import { InterviewData } from '@/types/interview';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useTheme } from '@/hooks/useTheme';
 import { dummyInterviewData } from '@/data/dummyData';
 import { exportToPDF, exportToExcel } from '@/utils/exportUtils';
 import { toast } from 'sonner';
 import { Toaster } from 'sonner';
-type ViewMode = 'hero' | 'form' | 'dashboard';
+import thriftedLogo from '@/assets/thrifted-logo.png';
+
+type ViewMode = 'hero' | 'form' | 'dashboard' | 'client';
 const Index = () => {
   const [currentView, setCurrentView] = useState<ViewMode>('hero');
   const [interviewData, setInterviewData] = useLocalStorage<InterviewData[]>('interview-data', dummyInterviewData);
   const [editingInterview, setEditingInterview] = useState<InterviewData | null>(null);
+  const { theme } = useTheme();
 
   // Load dummy data if localStorage is empty
   useEffect(() => {
@@ -71,6 +77,8 @@ const Index = () => {
         return <InterviewForm onSave={handleSaveInterview} editingData={editingInterview} onCancel={editingInterview ? handleCancelEdit : undefined} />;
       case 'dashboard':
         return <Dashboard data={interviewData} onEdit={handleEditInterview} onDelete={handleDeleteInterview} onExportPDF={handleExportPDF} onExportExcel={handleExportExcel} />;
+      case 'client':
+        return <ClientView data={interviewData} onBack={() => setCurrentView('dashboard')} />;
       default:
         return <HeroSection />;
     }
@@ -103,19 +111,19 @@ const Index = () => {
             }} whileTap={{
               scale: 0.95
             }}>
-              <div className="w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center bg-amber-300">
-                <Sparkles className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 rounded-lg overflow-hidden flex items-center justify-center glass-card border border-glass-border/50">
+                <img src={thriftedLogo} alt="Thrifted Project" className="w-full h-full object-cover" />
               </div>
               <div>
-                <h1 className="text-xl font-poppins font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">INTERVIEW</h1>
-                <p className="text-xs text-muted-foreground">Management System</p>
+                <h1 className="text-xl font-orbitron font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">THRIFTED PROJECT</h1>
+                <p className="text-xs text-muted-foreground font-rajdhani">Interview Management</p>
               </div>
             </motion.div>
 
             {/* Navigation Items */}
             <div className="hidden md:flex items-center gap-2">
               <Button variant={currentView === 'hero' ? 'default' : 'ghost'} onClick={() => setCurrentView('hero')} className="glass-button hover-lift">
-                <Sparkles className="w-4 h-4 mr-2" />
+                <FileText className="w-4 h-4 mr-2" />
                 Beranda
               </Button>
               <Button variant={currentView === 'form' ? 'default' : 'ghost'} onClick={() => {
@@ -129,9 +137,13 @@ const Index = () => {
                 <BarChart3 className="w-4 h-4 mr-2" />
                 Dashboard
               </Button>
+              <Button variant={currentView === 'client' ? 'default' : 'ghost'} onClick={() => setCurrentView('client')} className="glass-button hover-lift">
+                <Share2 className="w-4 h-4 mr-2" />
+                Client View
+              </Button>
             </div>
 
-            {/* Stats Badge */}
+            {/* Theme Switcher & Stats */}
             <motion.div initial={{
               opacity: 0,
               scale: 0.8
@@ -142,6 +154,7 @@ const Index = () => {
               duration: 0.5,
               delay: 0.2
             }} className="hidden lg:flex items-center gap-4">
+              <ThemeSwitcher />
               <Badge variant="outline" className="glass-card border-glass-border/50 px-3 py-1">
                 <Users className="w-4 h-4 mr-2" />
                 {interviewData.length} Interview
@@ -151,22 +164,29 @@ const Index = () => {
 
           {/* Mobile Navigation */}
           <div className="md:hidden mt-4">
-            <div className="flex gap-2">
-              <Button variant={currentView === 'hero' ? 'default' : 'ghost'} onClick={() => setCurrentView('hero')} className="flex-1 glass-button text-sm" size="sm">
-                <Sparkles className="w-4 h-4 mr-1" />
+            <div className="grid grid-cols-4 gap-2">
+              <Button variant={currentView === 'hero' ? 'default' : 'ghost'} onClick={() => setCurrentView('hero')} className="glass-button text-xs" size="sm">
+                <FileText className="w-3 h-3 mr-1" />
                 Home
               </Button>
               <Button variant={currentView === 'form' ? 'default' : 'ghost'} onClick={() => {
                 setEditingInterview(null);
                 setCurrentView('form');
-              }} className="flex-1 glass-button text-sm" size="sm">
-                <Plus className="w-4 h-4 mr-1" />
+              }} className="glass-button text-xs" size="sm">
+                <Plus className="w-3 h-3 mr-1" />
                 Form
               </Button>
-              <Button variant={currentView === 'dashboard' ? 'default' : 'ghost'} onClick={() => setCurrentView('dashboard')} className="flex-1 glass-button text-sm" size="sm">
-                <BarChart3 className="w-4 h-4 mr-1" />
+              <Button variant={currentView === 'dashboard' ? 'default' : 'ghost'} onClick={() => setCurrentView('dashboard')} className="glass-button text-xs" size="sm">
+                <BarChart3 className="w-3 h-3 mr-1" />
                 Data
               </Button>
+              <Button variant={currentView === 'client' ? 'default' : 'ghost'} onClick={() => setCurrentView('client')} className="glass-button text-xs" size="sm">
+                <Share2 className="w-3 h-3 mr-1" />
+                Client
+              </Button>
+            </div>
+            <div className="mt-3 flex justify-center">
+              <ThemeSwitcher />
             </div>
           </div>
         </div>
