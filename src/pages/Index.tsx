@@ -263,18 +263,7 @@ const Index = () => {
           <p className="text-muted-foreground mb-4">
             © 2024 InterviewPro Management System. Created by MaulanaHsndnn | Powered by AI & Modern Technology.
           </p>
-          <div className="flex justify-center gap-6">
-            <Badge variant="outline" className="glass-card border-glass-border/50">
-              React + TypeScript
-            </Badge>
-            <Badge variant="outline" className="glass-card border-glass-border/50">
-              Tailwind CSS
-            </Badge>
-            <Badge variant="outline" className="glass-card border-glass-border/50">
-              Framer Motion
-            </Badge>
-            
-          </div>
+          
         </div>
       </footer>
       </div>
