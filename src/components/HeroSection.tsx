@@ -54,12 +54,12 @@ const HeroSection = () => {
       }} transition={{
         duration: 0.8,
         delay: 0.4
-      }} className="text-5xl md:text-7xl lg:text-8xl font-poppins font-bold mb-6 leading-tight">
+      }} className="text-5xl md:text-7xl lg:text-8xl font-poppins font-bold mb-6 leading-tight my-[26px] mx-[21px] py-0 px-[28px]">
           <span className="bg-gradient-to-r from-foreground via-primary-glow to-accent bg-clip-text text-transparent">
             Laporan Interview
           </span>
           <br />
-          <span className="text-foreground/80">Masa Depan</span>
+          
         </motion.h1>
 
         <motion.p initial={{
