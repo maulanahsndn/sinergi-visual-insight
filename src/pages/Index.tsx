@@ -17,14 +17,13 @@ import { exportToPDF, exportToExcel } from '@/utils/exportUtils';
 import { toast } from 'sonner';
 import { Toaster } from 'sonner';
 import thriftedLogo from '@/assets/thrifted-logo.png';
+
 type ViewMode = 'hero' | 'form' | 'dashboard' | 'client';
 const Index = () => {
   const [currentView, setCurrentView] = useState<ViewMode>('hero');
   const [interviewData, setInterviewData] = useLocalStorage<InterviewData[]>('interview-data', dummyInterviewData);
   const [editingInterview, setEditingInterview] = useState<InterviewData | null>(null);
-  const {
-    theme
-  } = useTheme();
+  const { theme } = useTheme();
 
   // Load dummy data if localStorage is empty
   useEffect(() => {
@@ -116,7 +115,7 @@ const Index = () => {
                 <img src={thriftedLogo} alt="Thrifted Project" className="w-full h-full object-cover" />
               </div>
               <div>
-                <h1 className="text-xl font-orbitron font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Interview</h1>
+                <h1 className="text-xl font-orbitron font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">THRIFTED PROJECT</h1>
                 <p className="text-xs text-muted-foreground font-rajdhani">Interview Management</p>
               </div>
             </motion.div>
