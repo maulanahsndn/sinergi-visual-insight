@@ -317,7 +317,7 @@ const Index = () => {
       <footer className="glass-card border-t border-glass-border/50 py-8 px-6 mt-20">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-muted-foreground mb-4">
-            © 2024 InterviewPro Management System. Powered by AI & Modern Technology.
+            © 2024 InterviewPro Management System. Created by MaulanaHsndnn | Powered by AI & Modern Technology.
           </p>
           <div className="flex justify-center gap-6">
             <Badge variant="outline" className="glass-card border-glass-border/50">
