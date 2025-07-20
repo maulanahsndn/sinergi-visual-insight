@@ -273,9 +273,7 @@ const Index = () => {
             <Badge variant="outline" className="glass-card border-glass-border/50">
               Framer Motion
             </Badge>
-            <Badge variant="outline" className="glass-card border-glass-border/50">
-              Speech Recognition
-            </Badge>
+            
           </div>
         </div>
       </footer>
