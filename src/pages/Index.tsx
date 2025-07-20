@@ -112,9 +112,7 @@ const Index = () => {
             }} whileTap={{
               scale: 0.95
             }}>
-              <div className="w-12 h-12 rounded-lg overflow-hidden flex items-center justify-center glass-card border border-glass-border/50">
-                <img src={thriftedLogo} alt="Thrifted Project" className="w-full h-full object-cover" />
-              </div>
+              
               <div>
                 <h1 className="text-xl font-orbitron font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Interview</h1>
                 <p className="text-xs text-muted-foreground font-rajdhani">Interview Management</p>
