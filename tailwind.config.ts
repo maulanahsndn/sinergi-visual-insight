@@ -19,8 +19,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				inter: ['Inter', 'sans-serif'],
-				poppins: ['Poppins', 'sans-serif'],
+				orbitron: ['Orbitron', 'monospace'],
+				rajdhani: ['Rajdhani', 'sans-serif'],
+				exo2: ['Exo 2', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
