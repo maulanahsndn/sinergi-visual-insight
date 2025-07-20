@@ -103,7 +103,7 @@ const Index = () => {
             }} whileTap={{
               scale: 0.95
             }}>
-              <div className="w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center bg-amber-300">
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
               <div>
