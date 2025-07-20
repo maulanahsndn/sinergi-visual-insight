@@ -71,7 +71,7 @@ const HeroSection = () => {
       }} transition={{
         duration: 0.8,
         delay: 0.6
-      }} className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+      }} className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed md:text-lg">
           Kelola dan analisis hasil interview dengan teknologi canggih. 
           Sistem modern untuk proses rekrutmen yang lebih efisien dan terstruktur.
         </motion.p>
