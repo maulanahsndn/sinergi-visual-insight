@@ -16,7 +16,7 @@ import { dummyInterviewData } from '@/data/dummyData';
 import { exportToPDF, exportToExcel } from '@/utils/exportUtils';
 import { toast } from 'sonner';
 import { Toaster } from 'sonner';
-import thriftedLogo from '@/assets/thrifted-logo.png';
+// Logo is loaded from public directory
 type ViewMode = 'hero' | 'form' | 'dashboard' | 'client';
 const Index = () => {
   const [currentView, setCurrentView] = useState<ViewMode>('hero');

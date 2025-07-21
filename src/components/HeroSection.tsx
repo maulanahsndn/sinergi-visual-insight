@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles, Rocket, Users } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+// Hero background image is loaded from public directory
 const HeroSection = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden cinematic-hero">
       {/* Background Image */}
