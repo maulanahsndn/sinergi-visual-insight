@@ -54,28 +54,14 @@ const HeroSection = () => {
       }} transition={{
         duration: 0.8,
         delay: 0.4
-      }} className="text-5xl md:text-7xl lg:text-8xl font-orbitron font-bold mb-6 leading-tight">
+      }} className="text-5xl lg:text-8xl font-orbitron font-bold mb-6 leading-tight md:text-5xl">
           <span className="bg-gradient-to-r from-foreground via-primary-glow to-accent bg-clip-text text-transparent block mb-4 tracking-wider">
             LAPORAN INTERVIEW
           </span>
-          <span className="bg-gradient-to-r from-accent via-primary to-primary-glow bg-clip-text text-transparent block text-3xl md:text-4xl lg:text-5xl font-space-grotesk tracking-widest">
-            FUTURISTIC 2025
-          </span>
+          
         </motion.h1>
 
-        <motion.p initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.8,
-        delay: 0.6
-      }} className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed md:text-lg font-space-grotesk">
-          Kelola dan analisis hasil interview dengan teknologi canggih masa depan. 
-          Sistem revolusioner untuk proses rekrutmen yang lebih efisien dan terstruktur di era 2025.
-        </motion.p>
+        
 
         <motion.div initial={{
         opacity: 0,
