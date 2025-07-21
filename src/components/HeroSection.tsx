@@ -54,12 +54,13 @@ const HeroSection = () => {
       }} transition={{
         duration: 0.8,
         delay: 0.4
-      }} className="text-5xl md:text-7xl lg:text-8xl font-poppins font-bold mb-6 leading-tight my-[26px] mx-[21px] py-0 px-[28px]">
-          <span className="bg-gradient-to-r from-foreground via-primary-glow to-accent bg-clip-text text-transparent my-0 text-4xl">
-            Laporan Interview
+      }} className="text-5xl md:text-7xl lg:text-8xl font-orbitron font-bold mb-6 leading-tight">
+          <span className="bg-gradient-to-r from-foreground via-primary-glow to-accent bg-clip-text text-transparent block mb-4 tracking-wider">
+            LAPORAN INTERVIEW
           </span>
-          <br />
-          
+          <span className="bg-gradient-to-r from-accent via-primary to-primary-glow bg-clip-text text-transparent block text-3xl md:text-4xl lg:text-5xl font-space-grotesk tracking-widest">
+            FUTURISTIC 2025
+          </span>
         </motion.h1>
 
         <motion.p initial={{
@@ -71,9 +72,9 @@ const HeroSection = () => {
       }} transition={{
         duration: 0.8,
         delay: 0.6
-      }} className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed md:text-lg">
-          Kelola dan analisis hasil interview dengan teknologi canggih. 
-          Sistem modern untuk proses rekrutmen yang lebih efisien dan terstruktur.
+      }} className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed md:text-lg font-space-grotesk">
+          Kelola dan analisis hasil interview dengan teknologi canggih masa depan. 
+          Sistem revolusioner untuk proses rekrutmen yang lebih efisien dan terstruktur di era 2025.
         </motion.p>
 
         <motion.div initial={{
@@ -90,22 +91,22 @@ const HeroSection = () => {
           scale: 1.05
         }} whileTap={{
           scale: 0.95
-        }} className="glass-card px-8 py-4 text-lg font-semibold text-primary hover:neon-glow transition-all duration-300 hover-lift" onClick={() => document.getElementById('dashboard')?.scrollIntoView({
+        }} className="glass-card px-8 py-4 text-lg font-semibold text-primary hover:neon-glow transition-all duration-300 hover-lift font-space-grotesk tracking-wider" onClick={() => document.getElementById('dashboard')?.scrollIntoView({
           behavior: 'smooth'
         })}>
             <Sparkles className="w-5 h-5 inline mr-2" />
-            Mulai Sekarang
+            MULAI SEKARANG
           </motion.button>
           
           <motion.button whileHover={{
           scale: 1.05
         }} whileTap={{
           scale: 0.95
-        }} className="glass-button px-8 py-4 text-lg font-medium hover-lift" onClick={() => document.getElementById('features')?.scrollIntoView({
+        }} className="glass-button px-8 py-4 text-lg font-medium hover-lift font-space-grotesk tracking-wider" onClick={() => document.getElementById('features')?.scrollIntoView({
           behavior: 'smooth'
         })}>
             <Users className="w-5 h-5 inline mr-2" />
-            Lihat Fitur
+            LIHAT FITUR
           </motion.button>
         </motion.div>
 

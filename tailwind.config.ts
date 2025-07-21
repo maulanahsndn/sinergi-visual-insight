@@ -22,6 +22,8 @@ export default {
 				orbitron: ['Orbitron', 'monospace'],
 				rajdhani: ['Rajdhani', 'sans-serif'],
 				exo2: ['Exo 2', 'sans-serif'],
+				'space-grotesk': ['Space Grotesk', 'sans-serif'],
+				jetbrains: ['JetBrains Mono', 'monospace'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
