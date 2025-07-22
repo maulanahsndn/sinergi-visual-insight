@@ -95,6 +95,30 @@ const Index = () => {
         return <HeroSection />;
     }
   };
+
+  // New state for header visibility
+  const [showHeader, setShowHeader] = React.useState(true);
+
+  // Effect to handle scroll for header show/hide cinematic effect
+  React.useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      if (window.scrollY < lastScrollY) {
+        // Scrolling up - show header
+        setShowHeader(true);
+      } else if (window.scrollY > lastScrollY) {
+        // Scrolling down - hide header
+        setShowHeader(false);
+      }
+      lastScrollY = window.scrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return <>
       <LoadingScreen isLoading={isLoading} onComplete={handleLoadingComplete} />
       
@@ -109,64 +133,77 @@ const Index = () => {
       }} />
           <div className="min-h-screen bg-background">
             {/* Navigation Bar */}
-            <motion.nav initial={{
-          opacity: 0,
-          y: -20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.5
-        }} className="fixed top-0 left-0 right-0 z-40 glass-card border-b border-glass-border/50 backdrop-blur-xl">
+            <motion.nav
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: showHeader ? 1 : 0, y: showHeader ? 0 : -50 }}
+              transition={{ duration: 0.5 }}
+              className="fixed top-0 left-0 right-0 z-40 glass-card border-b border-glass-border/50 backdrop-blur-xl"
+            >
               <div className="max-w-7xl mx-auto px-6 py-4">
                 <div className="flex items-center justify-between">
                   {/* Logo */}
-                  <motion.div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentView('hero')} whileHover={{
-                scale: 1.05
-              }} whileTap={{
-                scale: 0.95
-              }}>
-                    
+                  <motion.div
+                    className="flex items-center gap-3 cursor-pointer"
+                    onClick={() => setCurrentView('hero')}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     <div>
-                      <h1 className="text-xl font-orbitron font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent tracking-wider">Interview</h1>
-                      <p className="text-xs text-muted-foreground font-jetbrains uppercase tracking-widest">Interview Management 2025</p>
+                      <h1 className="text-xl font-orbitron font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent tracking-wider">
+                        Interview
+                      </h1>
+                      <p className="text-xs text-muted-foreground font-jetbrains uppercase tracking-widest">
+                        Interview Management 2025
+                      </p>
                     </div>
                   </motion.div>
 
                   {/* Navigation Items */}
                   <div className="hidden md:flex items-center gap-2">
-                    <Button variant={currentView === 'hero' ? 'default' : 'ghost'} onClick={() => setCurrentView('hero')} className="glass-button hover-lift">
+                    <Button
+                      variant={currentView === 'hero' ? 'default' : 'ghost'}
+                      onClick={() => setCurrentView('hero')}
+                      className="glass-button hover-lift"
+                    >
                       <FileText className="w-4 h-4 mr-2" />
                       Beranda
                     </Button>
-                    <Button variant={currentView === 'form' ? 'default' : 'ghost'} onClick={() => {
-                  setEditingInterview(null);
-                  setCurrentView('form');
-                }} className="glass-button hover-lift">
+                    <Button
+                      variant={currentView === 'form' ? 'default' : 'ghost'}
+                      onClick={() => {
+                        setEditingInterview(null);
+                        setCurrentView('form');
+                      }}
+                      className="glass-button hover-lift"
+                    >
                       <Plus className="w-4 h-4 mr-2" />
                       Form Baru
                     </Button>
-                    <Button variant={currentView === 'dashboard' ? 'default' : 'ghost'} onClick={() => setCurrentView('dashboard')} className="glass-button hover-lift">
+                    <Button
+                      variant={currentView === 'dashboard' ? 'default' : 'ghost'}
+                      onClick={() => setCurrentView('dashboard')}
+                      className="glass-button hover-lift"
+                    >
                       <BarChart3 className="w-4 h-4 mr-2" />
                       Dashboard
                     </Button>
-                    <Button variant={currentView === 'client' ? 'default' : 'ghost'} onClick={() => setCurrentView('client')} className="glass-button hover-lift">
+                    <Button
+                      variant={currentView === 'client' ? 'default' : 'ghost'}
+                      onClick={() => setCurrentView('client')}
+                      className="glass-button hover-lift"
+                    >
                       <Share2 className="w-4 h-4 mr-2" />
                       Client View
                     </Button>
                   </div>
 
                   {/* Theme Switcher & Stats */}
-                  <motion.div initial={{
-                opacity: 0,
-                scale: 0.8
-              }} animate={{
-                opacity: 1,
-                scale: 1
-              }} transition={{
-                duration: 0.5,
-                delay: 0.2
-              }} className="hidden lg:flex items-center gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="hidden lg:flex items-center gap-4"
+                  >
                     <ThemeSwitcher />
                     <Badge variant="outline" className="glass-card border-glass-border/50 px-3 py-1">
                       <Users className="w-4 h-4 mr-2" />
@@ -178,22 +215,42 @@ const Index = () => {
                 {/* Mobile Navigation */}
                 <div className="md:hidden mt-4">
                   <div className="grid grid-cols-4 gap-2">
-                    <Button variant={currentView === 'hero' ? 'default' : 'ghost'} onClick={() => setCurrentView('hero')} className="glass-button text-xs" size="sm">
+                    <Button
+                      variant={currentView === 'hero' ? 'default' : 'ghost'}
+                      onClick={() => setCurrentView('hero')}
+                      className="glass-button text-xs"
+                      size="sm"
+                    >
                       <FileText className="w-3 h-3 mr-1" />
                       Home
                     </Button>
-                    <Button variant={currentView === 'form' ? 'default' : 'ghost'} onClick={() => {
-                  setEditingInterview(null);
-                  setCurrentView('form');
-                }} className="glass-button text-xs" size="sm">
+                    <Button
+                      variant={currentView === 'form' ? 'default' : 'ghost'}
+                      onClick={() => {
+                        setEditingInterview(null);
+                        setCurrentView('form');
+                      }}
+                      className="glass-button text-xs"
+                      size="sm"
+                    >
                       <Plus className="w-3 h-3 mr-1" />
                       Form
                     </Button>
-                    <Button variant={currentView === 'dashboard' ? 'default' : 'ghost'} onClick={() => setCurrentView('dashboard')} className="glass-button text-xs" size="sm">
+                    <Button
+                      variant={currentView === 'dashboard' ? 'default' : 'ghost'}
+                      onClick={() => setCurrentView('dashboard')}
+                      className="glass-button text-xs"
+                      size="sm"
+                    >
                       <BarChart3 className="w-3 h-3 mr-1" />
                       Data
                     </Button>
-                    <Button variant={currentView === 'client' ? 'default' : 'ghost'} onClick={() => setCurrentView('client')} className="glass-button text-xs" size="sm">
+                    <Button
+                      variant={currentView === 'client' ? 'default' : 'ghost'}
+                      onClick={() => setCurrentView('client')}
+                      className="glass-button text-xs"
+                      size="sm"
+                    >
                       <Share2 className="w-3 h-3 mr-1" />
                       Client
                     </Button>
